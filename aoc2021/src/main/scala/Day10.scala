@@ -21,9 +21,7 @@ object Day10 extends App {
     0
   }
 
-  println(input.map {
-    scoreOne
-  }.sum)
+  println(input.map(scoreOne).sum)
 
 
   // Part 2
@@ -45,7 +43,7 @@ object Day10 extends App {
       Some(stack.foldLeft(0L) { case (v, c) => 5 * v + valueTwo(c) })
   }
 
-  input.flatMap { scoreTwo }.sorted match {
+  input.flatMap(scoreTwo).sorted match {
     case scores => println(scores(scores.length / 2))
   }
 }
