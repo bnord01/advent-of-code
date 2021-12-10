@@ -6,45 +6,46 @@ object Day10 extends App {
   val matching = Map('(' -> ')', '[' -> ']', '{' -> '}', '<' -> '>')
 
   // Part 1
-  val value1 = Map(')' -> 3, ']' -> 57, '}' -> 1197, '>' -> 25137)
-  input.map { line =>
+  val valueOne = Map(')' -> 3, ']' -> 57, '}' -> 1197, '>' -> 25137)
+
+  def scoreOne(line: String): Int = {
     var stack: List[Char] = Nil
-    def score(line: String): Int = {
-      for (c <- line) {
-        if (opening(c))
-          stack = matching(c) :: stack
-        else if (stack.isEmpty || stack.head != c)
-          return value1(c)
-        else
-          stack = stack.tail
-      }
-      0
+    for (c <- line) {
+      if (opening(c))
+        stack = matching(c) :: stack
+      else if (stack.isEmpty || stack.head != c)
+        return valueOne(c)
+      else
+        stack = stack.tail
     }
-    score(line)
-  }.sum match {
-    case v => println(v)
+    0
   }
 
+  println(input.map {
+    scoreOne
+  }.sum)
+
+
   // Part 2
-  val value2 = Map(')' -> 1, ']' -> 2, '}' -> 3, '>' -> 4)
-  input.flatMap { line =>
+  val valueTwo = Map(')' -> 1, ']' -> 2, '}' -> 3, '>' -> 4)
+
+  def scoreTwo(line: String): Option[Long] = {
     var stack: List[Char] = Nil
-    def score(line: String): Option[Long] = {
-      for (c <- line) {
-        if (opening(c))
-          stack = matching(c) :: stack
-        else if (stack.isEmpty || stack.head != c)
-          return None
-        else
-          stack = stack.tail
-      }
-      if (stack.isEmpty)
-        None
+    for (c <- line) {
+      if (opening(c))
+        stack = matching(c) :: stack
+      else if (stack.isEmpty || stack.head != c)
+        return None
       else
-        Some(stack.foldLeft(0L) { case (v, c) => 5 * v + value2(c) })
+        stack = stack.tail
     }
-    score(line)
-  }.sorted match {
+    if (stack.isEmpty)
+      None
+    else
+      Some(stack.foldLeft(0L) { case (v, c) => 5 * v + valueTwo(c) })
+  }
+
+  input.flatMap { scoreTwo }.sorted match {
     case scores => println(scores(scores.length / 2))
   }
 }
