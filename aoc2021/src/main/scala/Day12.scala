@@ -1,7 +1,5 @@
 import Utils.seqFromFileLines
 
-import scala.collection.mutable
-
 object Day12 extends App {
   val input = seqFromFileLines("day12.txt")
   val edges = input.map(_.split("-") match { case Array(a, b) => (a, b) })
