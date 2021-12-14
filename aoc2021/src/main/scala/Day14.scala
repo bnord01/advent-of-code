@@ -15,7 +15,7 @@ object Day14 extends App {
   })
 
   // Part 1
-  val templates2 = templates.map { case (a, b) => a -> (b + a.substring(1,1)) }
+  val templates2 = templates.map { case (a, b) => a -> (b + a(1)) }
 
   var nseq = sequence
   val s0 = sequence.substring(0, 1)
@@ -32,7 +32,7 @@ object Day14 extends App {
     case (m1, m2) => Map.from((m1.keys ++ m2.keys).map { x => x -> (m1.getOrElse(x, 0L) + m2.getOrElse(x, 0L)) })
   }
 
-  val successors = templates.map { case (a, b) => a -> Seq(a.substring(0,1) + b, b + a.substring(1,1)) }
+  val successors = templates.map { case (a, b) => a -> Seq(a(0) + b, b + a(1)) }
 
   val mem = mutable.Map[(String, Int), Map[String, Long]]()
 
