@@ -4,7 +4,7 @@ import Utils.seqFromFileLines
 object Day07 extends App {
   val input = seqFromFileLines("day07.txt")
   val crabs = Array.from(input.flatMap(_.split(',')).map(_.toInt))
-  crabs.sortInPlace
+  crabs.sortInPlace()
   val median = crabs(crabs.length / 2)
   println(median)
   println(crabs.map(x => abs(x - median)).sum)
