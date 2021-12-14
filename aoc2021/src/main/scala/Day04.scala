@@ -35,7 +35,7 @@ object Day04 extends App {
       play(b, z)
       if (wins(b)) {
         println(value(b, z))
-        break
+        break()
       }
     }
   }
