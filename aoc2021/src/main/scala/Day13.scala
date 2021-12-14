@@ -53,7 +53,7 @@ object Day13 extends App {
 
   val field = Array.ofDim[String](final_crosses.map(_.y).max + 1, final_crosses.map(_.x).max + 1)
   for (y <- field.indices; x <- field(y).indices) {
-    field(y)(x) = if (final_crosses(Cross(x, y))) "X" else " "
+    field(y)(x) = if (final_crosses(Cross(x, y))) "##" else "  "
   }
 
   println(field.map(_.mkString("")).mkString("\n"))
