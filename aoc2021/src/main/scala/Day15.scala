@@ -65,10 +65,10 @@ object Day15 extends App {
     case (i, j) =>
       val i0 = i % (NX + 1)
       val j0 = j % (NY + 1)
-      val orig_weigth = field(i0)(j0)
+      val orig_weight = field(i0)(j0)
       val repx = i / (NX + 1)
       val repy = j / (NY + 1)
-      (orig_weigth + repx + repy + - 1) % 9 + 1
+      (orig_weight + repx + repy + - 1) % 9 + 1
   }
 
   val NX2 = field.length * 5 - 1
