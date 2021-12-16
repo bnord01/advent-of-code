@@ -6,6 +6,8 @@ ThisBuild / scalacOptions += "-deprecation"
 
 ThisBuild / scalacOptions += "-unchecked"
 
+libraryDependencies += "org.parboiled" %% "parboiled" % "2.3.0"
+
 lazy val root = (project in file("."))
   .settings(
     name := "advent_of_code_2021"
