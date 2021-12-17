@@ -20,12 +20,14 @@ object Projectile {
 }
 
 object Day17 extends App {
-  // Part 1 -> paper
+  // val target = Target(20 to 30, -10 to -5) // example
+  val target = Target(117 to 164, -140 to -89) // real
+
+  // Part 1
+  val dy0 = abs(target.y.min)-1
+  println(dy0*(dy0+1)/2)
 
   // Part 2
-  val target = Target(117 to 164, -140 to -89) // real
-  // val target = Target(20 to 30, -10 to -5) // example
-
   var count = 0
 
   for (dx <- sqrt(target.x.min).floor.toInt to target.x.max;
