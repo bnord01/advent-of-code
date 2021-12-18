@@ -1,11 +1,6 @@
 import Utils.seqFromFileLines
-
-import scala.collection.mutable
-import scala.math.Ordering.Implicits._
 import org.parboiled2._
-
 import scala.math.max
-
 import scala.math.ceil
 
 object Day18 {
