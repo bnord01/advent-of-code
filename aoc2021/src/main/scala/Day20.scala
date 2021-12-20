@@ -3,7 +3,7 @@ object Day20 extends App {
   val rules = input.head.toCharArray.map { case '#' => 1; case '.' => 0 }
   val initial_board = input.tail.tail.toArray.map(_.toCharArray.map { case '#' => 1; case '.' => 0 })
 
-  def step(in: Array[Array[Int]], pad: Int = '0'): Array[Array[Int]] = {
+  def step(in: Array[Array[Int]], pad: Int): Array[Array[Int]] = {
     val padded = Array.fill[Int](in.length + 4, in(0).length + 4)(pad)
     for (i <- in.indices) {
       Array.copy(in(i), 0, padded(i + 2), 2, in(i).length)
