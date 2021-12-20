@@ -1,7 +1,5 @@
-import Utils.seqFromFileLines
-
 object Day20 extends App {
-  val input = seqFromFileLines("day20.txt")
+  val input = Utils.seqFromFileLines("day20.txt")
   val rules = input.head.toCharArray.map { case '#' => 1; case '.' => 0 }
   val initial_board = input.tail.tail.toArray.map(_.toCharArray.map { case '#' => 1; case '.' => 0 })
 
@@ -19,9 +17,9 @@ object Day20 extends App {
 
   // Part 1
   val result1 = (0 until 2).foldLeft(initial_board)((b, i) => step(b, pad(i)))
-  println(result1.map(_.count(_ == 1)).sum)
+  println(result1.map(_.sum).sum)
 
   // Part 2
   val result2 = (2 until 50).foldLeft(result1)((b, i) => step(b, pad(i)))
-  println(result2.map(_.count(_ == 1)).sum)
+  println(result2.map(_.sum).sum)
 }
