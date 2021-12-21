@@ -30,8 +30,8 @@ object Day21 extends App {
 
   // Sadly the naive approach chokes while hashing
   val wins: mutable.Map[(Int, Int, Int, Int), (Long, Long)] = mutable.Map.empty.withDefault { case (s1, s2, p1, p2) =>
-    if (p1 > 15) (1, 0)
-    else if (p2 > 15) (0, 1)
+    if (p1 > 20) (1, 0)
+    else if (p2 > 20) (0, 1)
     else rolls.map(d => wins(s2, (s1 + d) % 10, p2, p1 + 1 + ((s1 + d) % 10))).foldLeft((0L, 0L)) { case ((x1, x2), (y2, y1)) => (x1 + y1, x2 + y2) }
   }
 
