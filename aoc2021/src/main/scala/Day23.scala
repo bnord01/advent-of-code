@@ -17,7 +17,8 @@ object Day23 extends App {
         rdy += s
         if (s.done)
           return c
-        else wl ++= s.moves.map { case (c1, s1) => (c + c1, s1) }
+        else
+          wl ++= s.moves.map { case (c1, s1) => (c + c1, s1) }
       }
     }
     -1
@@ -85,13 +86,7 @@ case class State(room:Map[Int,List[Int]],floor:Map[Int,Int], room_size:Int) {
 
   def moves: Seq[(Int, State)] = in_moves ++ out_moves
 
-  def done: Boolean = floor.isEmpty && room.forall{case (i,l) => l.forall(v => dest(v) == i)}
-
-  def print(): Unit = {
-    println(positions.map(floor.getOrElse(_,".")).mkString(""))
-    println(positions.map{i => room.getOrElse(i,Nil).headOption.getOrElse(" ")}.mkString(""))
-    println(positions.map{i => room.getOrElse(i,Nil) match {case _ :: x :: Nil => x case _ => " "}}.mkString(""))
-  }
+  def done: Boolean = floor.isEmpty && room.forall{ case (i,l) => l.forall(v => dest(v) == i) }
 }
 
 object State {
