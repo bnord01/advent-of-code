@@ -1,8 +1,7 @@
 import scala.collection.mutable
 
 object Day24 extends App {
-  val blocks = Utils.seqFromFileLines("day24.txt").grouped(18)
-    .map(Block.parse).zipWithIndex.map(x => x._2 -> x._1).toMap
+  val blocks = Utils.seqFromFileLines("day24.txt").grouped(18).map(Block.parse).toArray
 
   def find(max:Boolean): String = {
     val ws = if (max) 9.to(1,-1) else 1 to 9
